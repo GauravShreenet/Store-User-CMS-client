@@ -1,8 +1,51 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CustomInputs } from '../../custom-inputs/CustomInputs'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUser } from '../../helper/axiosHelper'
+import { toast } from 'react-toastify'
+import { autoLogin, getUserProfile } from '../profile/userAction'
 
 const Login = () => {
+
+    const emailRef = useRef("")
+    const passRef = useRef("")
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const { user } = useSelector((state) => state.userInfo)
+
+    const fromLocation = location?.state?.from?.location?.pathname || "/"
+
+    useEffect(()=>{
+        user?._id && navigate(fromLocation)
+        !user?._id && dispatch(autoLogin());
+    }, [user?._id, navigate, dispatch, fromLocation])
+
+    const handleOnSubmit = async(e) => {
+        e.preventDefault();
+
+        const email = emailRef.current.value
+        const password = passRef.current.value
+
+        if(email && password) {
+            const resPending = loginUser({ email, password })
+            toast.promise( resPending, {
+                pending: "Please Wait..."
+            })
+
+            const { status, message, jwts } = await resPending;
+            toast[status](message);
+
+            if(jwts?.accessJWT) {
+                sessionStorage.setItem("accessJWT", jwts.accessJWT);
+                localStorage.setItem("refreshJWT", jwts.refreshJWT)
+
+                dispatch(getUserProfile())
+            }
+        }
+    }
 
     const inputs = [
         {
@@ -11,6 +54,7 @@ const Login = () => {
             required: true,
             type: 'email',
             placeholder: "user@email.com",
+            forwardRef: emailRef,
         },
         {
             label: 'Password',
@@ -18,13 +62,16 @@ const Login = () => {
             required: true,
             type: 'password',
             placeholder: "XXXXXXXXX",
+            forwardRef: passRef,
         },
     ]
 
     return (
         <div className='h-dvh bg-zinc-100 py-12 px-5'>
             <h1 className='text-4xl font-bold text-center'>Sign in to your account</h1>
-            <form className="max-w-lg p-8 h-auto mx-auto my-12 rounded-2xl shadow-lg sm: w-sm">
+            <form
+            onSubmit={handleOnSubmit}
+            className="max-w-lg p-8 h-auto mx-auto my-12 rounded-2xl shadow-lg sm: w-sm">
                 <div className="mb-5">
                     {
                         inputs.map((item, i) => (<CustomInputs key={i} {...item} />))

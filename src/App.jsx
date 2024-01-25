@@ -6,6 +6,7 @@ import Login from './pages/sign-in-up/Login'
 import Register from './pages/sign-in-up/Register'
 import PasswordReset from './pages/sign-in-up/PasswordReset'
 import VerifyEmail from './pages/sign-in-up/VerifyEmail'
+import Home from './pages/home/Home';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Routes>
 
         {/* public route */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
