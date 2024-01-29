@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const rootAPI = import.meta.env.VITE_ROOT_API + "/api/v1"
-const userAPI = rootAPI + "/users"
+const userAPI = rootAPI + "/users";
+const productAPI = rootAPI + "/products"
 
 const getAccessJWT = () => {
     return sessionStorage.getItem("accessJWT")
@@ -101,3 +102,12 @@ export const fetchNewAccessJwt = (data) => {
     })
 }
 
+// ===================== data fetching
+
+export const fetchArrivalProducts = (data) => {
+    return apiProcessor({
+        method: 'get',
+        url: productAPI + "/new-arrival",
+        data,
+    })
+}
