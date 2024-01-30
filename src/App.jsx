@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <Routes>
-
         {/* public route */}
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<Login />} />

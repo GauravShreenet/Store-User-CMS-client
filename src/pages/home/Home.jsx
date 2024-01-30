@@ -4,6 +4,7 @@ import heroImg from '../../assets/backhero.jpg';
 import heroLogo from '../../assets/herologo.png';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NewCollection } from '../../component/home/NewCollection';
+import { Categories } from '../../component/home/Categories';
 
 
 const Home = () => {
@@ -28,13 +29,14 @@ const Home = () => {
         </div>
       </div>
       <div className='flex justify-center items-center my-20'>
-        <div className='text-center w-[72vh] text-lg w-full '>
+        <div className='text-center w-[68vh] text-lg w-full '>
           <h2 className='text-4xl font-bold'>Discover Your Style with BGS</h2>
           <p className='my-10'>Explore the latest trends at your fingertips! BGS brings you curated fashion for all occasions. Effortless shopping, exclusive offers, and global delivery.</p>
           <span className='uppercase underline hover:no-underline hover:text-blue-500 cursor-pointer font-bold'>read more</span>
         </div>
       </div>
       <NewCollection />
+      <Categories />
 
     </MainLayout>
   )

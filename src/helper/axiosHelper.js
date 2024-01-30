@@ -111,3 +111,11 @@ export const fetchArrivalProducts = (data) => {
         data,
     })
 }
+
+export const fetchCategories = (data) => {
+    return apiProcessor({
+        method: 'get',
+        url: productAPI + "/categories",
+        data,
+    })
+}

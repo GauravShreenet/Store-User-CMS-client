@@ -8,8 +8,6 @@ export const NewCollection = () => {
 
     const { arrival } = useSelector((state)=> state.productInfo)
 
-    
-
     useEffect(()=>{
         dispatch(getArrivalProduct())
       }, [dispatch])

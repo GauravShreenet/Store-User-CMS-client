@@ -3,8 +3,9 @@ import { CustomCard } from '../custom-card/CustomCard'
 import Slider from 'react-slick'
 import { NextArrow } from '../slider-button/NextArrow';
 import { PrevArrow } from '../slider-button/PrevArrow';
+import { CollectionCard } from '../custom-card/CollectionCard';
 
-export const CustomSlider = ({ products }) => {
+export const CustomSlider = ({ products, categories }) => {
 
     let settings = {
         dots: true,
@@ -54,11 +55,14 @@ export const CustomSlider = ({ products }) => {
     return (
         <div className='mx-10'>
             <Slider {...settings}>
-                {products?.map((itm, i) => (
-                    <div key={i} className=''>
-                        <CustomCard {...itm} />
-                    </div>
-                ))}
+                {
+                    products ? (products?.map((itm, i) => (
+                        <div key={i}>
+                            <CustomCard {...itm} />
+                        </div>))) : (categories?.map((itm, i) => (<div key={i}>
+                            <CollectionCard {...itm} />
+                        </div>)))
+                }
             </Slider>
         </div>
     );
