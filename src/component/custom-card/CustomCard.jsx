@@ -33,20 +33,19 @@ export const CustomCard = ({ thumbnail, name, price, images }) => {
     };
 
     return (
-        <div>
-            <div
-                className="max-w-md mx-[1vh] bg-white shadow-lg overflow-hidden rounded-md hover:cursor-pointer">
+        <div className='bg-white max-w-md mx-[0.5vh] shadow-lg rounded-lg mb-10'>
+            <div className="w-full h-[85vw] sm:h-[50vw] md:h-[30vw] lg:h-[30vw] xl:h-[30vw] 2xl:h-[30vw] 2xl:w-full hover:cursor-pointer">
                 <img
-                    className="object-fit w-full h-[50vh] sm:h-[40vh] md:h-[45vh] lg:h-[50vh] xl:h-[62vh]"
+                    className="object-fit w-full h-full"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     src={isHovered && images.length > 0 ? images[currentImageIndex] : thumbnail}
                     alt="Card Image"
                 />
-                <div className="p-6">
+            </div>
+            <div className="p-4">
                     <h2 className="text-sm font-bold">{name}</h2>
-                    <p className="text-gray-700 mb-4">${price}</p>
-                </div>
+                    <p className="text-gray-700">${price}</p>
             </div>
         </div>
     );

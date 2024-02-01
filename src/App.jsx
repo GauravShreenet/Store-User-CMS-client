@@ -7,6 +7,8 @@ import Register from './pages/sign-in-up/Register'
 import PasswordReset from './pages/sign-in-up/PasswordReset'
 import VerifyEmail from './pages/sign-in-up/VerifyEmail'
 import Home from './pages/home/Home';
+import Category from './pages/category/Category';
+
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/sign-up" element={<Register />} />
         <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
-
+        <Route path='/collections/:slug' element={<Category />}/>
+        
         {/* private route */}
 
       </Routes>

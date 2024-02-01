@@ -3,6 +3,7 @@ import axios from 'axios';
 const rootAPI = import.meta.env.VITE_ROOT_API + "/api/v1"
 const userAPI = rootAPI + "/users";
 const productAPI = rootAPI + "/products"
+const categoryAPI = rootAPI + "/categories"
 
 const getAccessJWT = () => {
     return sessionStorage.getItem("accessJWT")
@@ -102,7 +103,7 @@ export const fetchNewAccessJwt = (data) => {
     })
 }
 
-// ===================== data fetching
+// ===================== product fetching
 
 export const fetchArrivalProducts = (data) => {
     return apiProcessor({
@@ -112,10 +113,10 @@ export const fetchArrivalProducts = (data) => {
     })
 }
 
-export const fetchCategories = (data) => {
+// ================ categories fetching
+export const fetchCategories = (slug) => {
     return apiProcessor({
         method: 'get',
-        url: productAPI + "/categories",
-        data,
+        url: slug ? categoryAPI + "/" + slug : categoryAPI,
     })
 }

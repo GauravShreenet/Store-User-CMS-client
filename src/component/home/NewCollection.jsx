@@ -13,7 +13,7 @@ export const NewCollection = () => {
       }, [dispatch])
 
     return (
-        <div className='mb-10'>
+        <div className='mb-20'>
             <h1 className='text-4xl m-10 font-bold'>New Arrival</h1>
             <div>
                 <CustomSlider products={arrival}/>
