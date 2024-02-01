@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CustomSlider } from '../custom-slider/CustomSlider'
 import { useDispatch, useSelector } from 'react-redux'
-import { getArrivalProduct } from '../../pages/home/arrivalAction'
+import { getArrivalProduct } from '../../pages/home/productAction'
 
 export const NewCollection = () => {
     const dispatch = useDispatch()

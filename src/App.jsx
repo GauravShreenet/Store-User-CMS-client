@@ -8,6 +8,7 @@ import PasswordReset from './pages/sign-in-up/PasswordReset'
 import VerifyEmail from './pages/sign-in-up/VerifyEmail'
 import Home from './pages/home/Home';
 import Category from './pages/category/Category';
+import ProductLanding from './pages/product-landing/ProductLanding';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path='/collections/:slug' element={<Category />}/>
+        <Route path='/products/:slug' element={<ProductLanding />}/>
+
         
         {/* private route */}
 

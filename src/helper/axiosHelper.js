@@ -105,6 +105,13 @@ export const fetchNewAccessJwt = (data) => {
 
 // ===================== product fetching
 
+export const fetchProduct = (slug) => {
+    return apiProcessor({
+        method: 'get',
+        url: slug ? productAPI + "/" + slug : productAPI,
+    })
+}
+
 export const fetchArrivalProducts = (data) => {
     return apiProcessor({
         method: 'get',
