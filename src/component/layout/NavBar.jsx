@@ -19,9 +19,11 @@ export const NavBar = () => {
 
   return (
     <div className={`text-white text-xl px-12 py-5 fixed top-0 left-0 right-0 z-10 flex items-center justify-between z-20 ${colorChnage ? 'bg-gray-900 transition-all duration-800' : 'bg-transparent'}`}>
-      <div className='w-32 sm:w-32 md:w-32 lg:w-36 xl:w-40 2xl:w-48'>
-        <img src={logo} alt="logo" />
-      </div>
+      <Link to="/">
+        <div className='w-32 sm:w-32 md:w-32 lg:w-36 xl:w-40 2xl:w-48'>
+          <img src={logo} alt="logo" />
+        </div>
+      </Link>
       <div className='mx-10'>
         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
@@ -49,9 +51,9 @@ export const NavBar = () => {
       </div>
       <div className='flex items-center gap-3'>
         <Link to='/sign-in'><button type="button" className="text-white text-[2vh] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Login</button></Link>
-        <AiOutlineShoppingCart className='text-[4vh] hover:text-blue-500'/>
+        <AiOutlineShoppingCart className='text-[4vh] hover:text-blue-500' />
       </div>
-      
+
     </div>
   )
 }
