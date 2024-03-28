@@ -16,11 +16,11 @@ const Login = () => {
 
     const { user } = useSelector((state) => state.userInfo)
 
-    const fromLocation = location?.state?.from?.location?.pathname || "/"
+    const fromLocation = location?.state?.from?.location?.pathname ||  "/"
 
     useEffect(()=>{
         user?._id && navigate(fromLocation)
-        !user?._id && dispatch(autoLogin());
+        dispatch(autoLogin());
     }, [user?._id, navigate, dispatch, fromLocation])
 
     const handleOnSubmit = async(e) => {
@@ -28,6 +28,10 @@ const Login = () => {
 
         const email = emailRef.current.value
         const password = passRef.current.value
+
+        if (!email || !password) {
+            return toast.error("Both input field must be filled")
+        }
 
         if(email && password) {
             const resPending = loginUser({ email, password })
@@ -41,7 +45,7 @@ const Login = () => {
             if(jwts?.accessJWT) {
                 sessionStorage.setItem("accessJWT", jwts.accessJWT);
                 localStorage.setItem("refreshJWT", jwts.refreshJWT)
-
+                navigate(fromLocation)
                 dispatch(getUserProfile())
             }
         }

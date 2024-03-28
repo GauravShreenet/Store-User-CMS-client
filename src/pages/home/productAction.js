@@ -1,5 +1,5 @@
 import { fetchArrivalProducts, fetchProduct } from "../../helper/axiosHelper"
-import { setArrival, setSelectedProduct } from "./productSlice"
+import { setArrival, setProducts, setSelectedProduct } from "./productSlice"
 
 export const getArrivalProduct = () => async(dispatch) => {
     const resp = await fetchArrivalProducts()
@@ -15,4 +15,13 @@ export const getAProduct = (slug) => async(dispatch) => {
     if(status === 'success') {
         dispatch(setSelectedProduct(products))
     }
+}
+
+export const getAllProduct = () => async(dispatch) => {
+    const { status, products } = await fetchProduct()
+
+    if(status === 'success') {
+        dispatch(setProducts(products))
+    }
+
 }

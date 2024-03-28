@@ -4,6 +4,8 @@ const rootAPI = import.meta.env.VITE_ROOT_API + "/api/v1"
 const userAPI = rootAPI + "/users";
 const productAPI = rootAPI + "/products"
 const categoryAPI = rootAPI + "/categories"
+const cartAPI = rootAPI + "/cartItems"
+const orderAPI = rootAPI + "/orders"
 
 const getAccessJWT = () => {
     return sessionStorage.getItem("accessJWT")
@@ -25,12 +27,13 @@ const apiProcessor = async({ method, url, data, isPrivate, refreshToken }) => {
             data,
             headers,
         })
-
         return response.data;
+
 
     } catch (error) {
         if(error.response?.data?.message.toLowerCase().includes("jwt expired")){
-            const { accessJWT } = await fetchNewAccessJwt();
+            const { accessJWT } = await fetchNewAccessJWT();
+            
             if(accessJWT) {
                 sessionStorage.setItem("accessJWT", accessJWT)
                 return apiProcessor({ method, url, data, isPrivate, refreshToken });
@@ -94,12 +97,42 @@ export const loginUser = (data) => {
     })
 }
 
-export const fetchNewAccessJwt = (data) => {
+export const fetchNewAccessJWT = () => {
     return apiProcessor({
         method: 'get',
-        url: userAPI + "/get-accessjwt",
+        url: userAPI + "/accessjwt",
         isPrivate: true,
         refreshToken: true,
+    })
+}
+
+export const updatePassword = (data) => {
+    return apiProcessor({
+        method: 'patch',
+        url: userAPI + "/password",
+        data,
+        isPrivate: true,
+    })
+}
+
+export const updateProfile = (data) => {
+    return apiProcessor({
+        method: 'patch',
+        url: userAPI + "/user-profile",
+        data,
+        isPrivate: true,
+    })
+}
+
+export const logoutUser = (_id) => {
+    return apiProcessor({
+        method: 'post',
+        url: userAPI + "/logout",
+        data: {
+            _id,
+            accessJWT: getAccessJWT(),
+            refreshToken: getRefreshJWT(),
+        }
     })
 }
 
@@ -125,5 +158,77 @@ export const fetchCategories = (slug) => {
     return apiProcessor({
         method: 'get',
         url: slug ? categoryAPI + "/" + slug : categoryAPI,
+    })
+}
+
+// =============== cartItem 
+export const fetchCartItems = () => {
+    return apiProcessor({
+        method: 'get',
+        url: cartAPI,
+        isPrivate: true,
+    })
+}
+
+export const addItem = (data) => {
+    return apiProcessor({
+        method: 'post',
+        url: cartAPI,
+        data,
+        isPrivate: true,
+    })
+}
+
+export const updateItemQty = (data) => {
+    return apiProcessor({
+        method: 'patch',
+        url: cartAPI,
+        data,
+        isPrivate: true,
+    })
+}
+
+export const deleteCartItm = (data) => {
+    return apiProcessor({
+        method: 'delete',
+        url: cartAPI,
+        data,
+        isPrivate: true,
+    })
+}
+
+export const deleteAllCartItm = () => {
+    return apiProcessor({
+        method: 'delete',
+        url: cartAPI + "/deleteAll",
+        isPrivate: true,
+    })
+}
+
+// ========== payment
+export const paySuccess = (data) => {
+    return apiProcessor({
+        method: 'post',
+        url: orderAPI,
+        data,
+        isPrivate: true,
+    })
+}
+
+export const addOrder = (data) => {
+    return apiProcessor({
+        method: 'post',
+        url: orderAPI + "/create-order",
+        data,
+        isPrivate: true,
+    })
+}
+
+// ===========fetch the user order
+export const fetchOrders = (_id) => {
+    return apiProcessor({
+        method: 'get',
+        url: _id ? orderAPI + "/" + _id : orderAPI,
+        isPrivate: true,
     })
 }

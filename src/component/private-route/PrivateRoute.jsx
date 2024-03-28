@@ -5,9 +5,9 @@ import { Navigate, useLocation } from 'react-router-dom'
 export const PrivateRoute = ({ children }) => {
     const location = useLocation()
     const { user } = useSelector((state)=> state.userInfo)
-  return user?.status === "active" ? children : <Navigate to="/sign-in" state={
+  return user?.status === "active" ? (children) : <Navigate to="/sign-in" state={
     {
-        form: {location}
+        from: {location}
     }
   } />
 }

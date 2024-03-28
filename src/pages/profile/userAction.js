@@ -1,4 +1,4 @@
-import { fetchAUser, fetchNewAccessJwt } from "../../helper/axiosHelper"
+import { fetchAUser, fetchNewAccessJWT } from "../../helper/axiosHelper"
 import { setUser } from "./userSlice"
 
 export const getUserProfile = () => async(dispatch) => {
@@ -10,16 +10,17 @@ export const getUserProfile = () => async(dispatch) => {
 }
 
 export const autoLogin = () => async(dispatch) => {
+    
     const accessJWT = sessionStorage.getItem("accessJWT")
-
+    
     if (accessJWT) {
         return dispatch(getUserProfile())
     }
 
     const refreshJWT = localStorage.getItem("refreshJWT")
-
+    
     if(refreshJWT) {
-        const token = await fetchNewAccessJwt();
+        const token = await fetchNewAccessJWT();
         if(token?.accessJWT){
             sessionStorage.setItem("accessJWT", token?.accessJWT);
             dispatch(getUserProfile());

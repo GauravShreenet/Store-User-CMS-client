@@ -5,17 +5,27 @@ import heroLogo from '../../assets/herologo.png';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NewCollection } from '../../component/home/NewCollection';
 import { Categories } from '../../component/home/Categories';
+import { useDispatch } from 'react-redux';
+import { getAllProduct } from './productAction';
+import { getCartItems } from '../product-landing/cartItemAction';
+import { NavBar } from '../../component/layout/NavBar';
+import { Footer } from '../../component/layout/Footer';
 
 
 const Home = () => {
-
   
   const targetRef = useRef(null);
+  const dispatch = useDispatch()
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 600], [1, 1.3]);
+  
+  useEffect(()=>{
+    dispatch(getCartItems())
+  },[dispatch])
 
   return (
-    <MainLayout>
+    <>
+    <NavBar />
       <div className=' h-[180svh]'>
         <div className='overflow-hidden sticky top-0'>
           <motion.div style={{ scale: scale }}>
@@ -37,8 +47,8 @@ const Home = () => {
       </div>
       <NewCollection />
       <Categories />
-
-    </MainLayout>
+    <Footer />
+    </>
   )
 }
 

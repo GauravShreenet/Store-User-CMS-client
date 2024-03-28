@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const CollectionCard = ({ title, slug }) => {
+export const CollectionCard = ({ title, slug, thumbnail }) => {
     return (
         <div>
             <Link to={`/collections/${slug}`}>
                 <div
                     className="max-w-md mx-[1vh] bg-white shadow-lg overflow-hidden rounded-md hover:cursor-pointer">
                     <img
-                        className="object-fit w-full h-[50vh] sm:h-[25vh] md:h-[30vh] lg:h-[35vh] xl:h-[42vh]"
-                        src=""
+                        className="object-cover w-full h-[50vh] sm:h-[25vh] md:h-[30vh] lg:h-[35vh] xl:h-[42vh]"
+                        src={thumbnail}
                         alt="Card Image"
                     />
                 </div>

@@ -4,22 +4,28 @@ import { getAProduct } from '../home/productAction'
 import { useParams } from 'react-router-dom'
 import { MainLayout } from '../../component/layout/MainLayout'
 import { ProductComp } from '../../component/product-landing/ProductComp'
+import { ProductSuggest } from '../../component/product-landing/ProductSuggest'
+import { ProductDesc } from '../../component/product-landing/ProductDesc'
+import productHero from '../../assets/productHero.jpg'
 
 const ProductLanding = () => {
 
   const dispatch = useDispatch()
   const { slug } = useParams()
 
-  const { selectedProduct } = useSelector((state) => state.productInfo)
 
   useEffect(() => {
     slug && dispatch(getAProduct(slug))
   }, [slug, dispatch])
 
   return (
-    <MainLayout>
-      <div className='mt-[10vh] mb-[10vh]'>
-          <ProductComp selectedProduct={ selectedProduct }/>
+    <MainLayout heroImage={productHero}>
+      <div className=''>
+          <ProductComp />
+      </div>        
+      <ProductSuggest />
+      <div>
+        <ProductDesc />
       </div>
     </MainLayout>
   )

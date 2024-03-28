@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export const CustomCard = ({ thumbnail, name, price, slug, variations }) => {
+export const CustomCard = ({ name, price, slug, variations }) => {
 
     const [selectedColor, setSelectedColor] = useState('')
 
@@ -22,7 +22,7 @@ export const CustomCard = ({ thumbnail, name, price, slug, variations }) => {
             <Link to={`/products/${slug}`}>
                 <div className="w-full h-[100vw] sm:h-[45vw] md:h-[50vw] lg:h-[30vw] xl:h-[30vw] 2xl:h-[30vw] 2xl:w-full hover:cursor-pointer">
                     <img
-                        className="object-fit w-full h-full"
+                        className="object-fit w-full h-full rounded-t-lg"
                         src={variationThumbnail}
                         alt="Card Image"
                     />

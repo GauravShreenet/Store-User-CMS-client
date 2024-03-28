@@ -24,7 +24,6 @@ const Register = () => {
         })
 
         const { status, message } = await pending
-        console.log(pending)
         toast[status](message);
 
         
@@ -120,7 +119,7 @@ const Register = () => {
                 <div className='flex justify-center'>
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full sm:w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-3">Register</button>
                 </div>
-                <Link to="/"><div className='text-blue-700 hover:text-blue-800 text-center'>Already have a Account?</div></Link>
+                <Link to="/sign-in"><div className='text-blue-700 hover:text-blue-800 text-center'>Already have a Account?</div></Link>
             </form>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 
 export const CustomVertical = ({ variationImages, onImageSelect }) => {
@@ -6,7 +6,11 @@ export const CustomVertical = ({ variationImages, onImageSelect }) => {
     const PrevArrow = (props) => <div />;
     const NextArrow = (props) => <div />;
 
-    const [selectedImg, setSelectedImg] = useState(null)
+    const [selectedImg, setSelectedImg] = useState("")
+
+    useEffect(()=>{
+        setSelectedImg(variationImages?.length > 0 ? variationImages[0] : "")
+    }, [variationImages])
 
     const handleImgClick = (image) => {
         setSelectedImg(image)
