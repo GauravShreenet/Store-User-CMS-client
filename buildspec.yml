@@ -18,5 +18,5 @@ artifacts:
   # include all files required to run the application
   files:
     - "**/*"
-    discard-paths: no
-    base-directory: dist
+  discard-path: no
+  base-directory: dist
