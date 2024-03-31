@@ -90,7 +90,7 @@ const Login = () => {
                 <div className='text-center'>
                     Don't have a account? <Link to="/sign-up" className='text-blue-700 hover:text-blue-800 font-bold'>Register</Link> now
                 </div>
-                <div className="inline-flex items-center justify-center w-full mb-5">
+                {/* <div className="inline-flex items-center justify-center w-full mb-5">
                     <hr className="w-full h-px my-8 bg-gray-100 border-0 dark:bg-gray-300" />
                     <span className="absolute px-6 font-medium  -translate-x-1/2 bg-white left-1/2 ">Or Continue with</span>
                 </div>
@@ -107,7 +107,7 @@ const Login = () => {
                         </svg>
                         Sign in with Google
                     </button>
-                </div>
+                </div> */}
             </form>
         </div>
 
