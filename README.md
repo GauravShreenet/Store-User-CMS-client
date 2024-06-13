@@ -19,7 +19,7 @@ Welcome to the Store User CMS project! This project aims to provide a user-frien
 
 To get started with this project, follow these steps:
 
-1. **Clone the repository to your local machine:** `git clone https://github.com/YourUsername/Store-User-CMS-client`
+1. **Clone the repository to your local machine:** `git clone https://github.com/GauravShreenet/Store-User-CMS-client`
 2. **Navigate to the project directory:** `cd Store-User-CMS-client`
 3. **Install dependencies:** `npm install`
 4. Rename `.env.sample` to `.env` and configure the environment variables accordingly.
