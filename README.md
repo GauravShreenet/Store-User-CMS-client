@@ -1,4 +1,4 @@
-# Store User CMS
+# E-Commerce Fashion User CMS
 
 Welcome to the Store User CMS project! This project aims to provide a user-friendly platform for managing an e-commerce website's user-facing tasks. Built with React and Vite, it offers seamless performance and rapid development capabilities. This is the frontend of the [API repository](https://github.com/GauravShreenet/Store-User-CMS-api).
 
@@ -13,6 +13,7 @@ Welcome to the Store User CMS project! This project aims to provide a user-frien
 
 - **React**: A popular JavaScript library for building user interfaces.
 - **Vite**: A next-generation frontend tooling tool that provides a fast development experience for modern web projects.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 
 ## Getting Started
 
