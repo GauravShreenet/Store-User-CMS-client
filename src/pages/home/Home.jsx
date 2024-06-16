@@ -6,7 +6,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { NewCollection } from '../../component/home/NewCollection';
 import { Categories } from '../../component/home/Categories';
 import { useDispatch } from 'react-redux';
-import { getAllProduct } from './productAction';
 import { getCartItems } from '../product-landing/cartItemAction';
 import { NavBar } from '../../component/layout/NavBar';
 import { Footer } from '../../component/layout/Footer';
@@ -41,7 +40,7 @@ const Home = () => {
       <div className='flex justify-center items-center my-20'>
         <div className='text-center w-[68vh] text-lg w-full '>
           <h2 className='text-4xl font-bold'>Discover Your Style with BGS</h2>
-          <p className='my-10'>Explore the latest trends at your fingertips! BGS brings you curated fashion for all occasions. Effortless shopping, exclusive offers, and global delivery.</p>
+          <p className='my-10 mx-5'>Explore the latest trends at your fingertips! BGS brings you curated fashion for all occasions. Effortless shopping, exclusive offers, and global delivery.</p>
           <span className='uppercase underline hover:no-underline hover:text-blue-500 cursor-pointer font-bold'>read more</span>
         </div>
       </div>

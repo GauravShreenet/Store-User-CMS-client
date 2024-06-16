@@ -36,7 +36,7 @@ function App() {
     dispatch(getCategories())
     dispatch(autoLogin())
     dispatch(getCartItems())
-  }, [dispatch ])
+  }, [dispatch])
 
   useEffect(() => {
     if (user?._id) {
