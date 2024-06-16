@@ -83,7 +83,6 @@ export const NavBar = () => {
   }
 
   const handleSearchBar = () => {
-    setShowCat(false)
     setIsDropdownOpen(false)
     setSearchBar(!searchBar)
     setColorChange(true)
@@ -97,40 +96,43 @@ export const NavBar = () => {
   }
 
   return (
-    <div className={`text-white text-xl px-5 py-5 fixed top-0 left-0 right-0 z-20 ${colorChnage ? 'bg-gray-900 transition-all duration-800' : 'bg-transparent'}`}>
+    <div className={`text-white text-xl py-5 fixed top-0 left-0 right-0 z-20 ${colorChnage ? 'bg-gray-900 transition-all duration-800' : 'bg-transparent'}`}>
       <div className="flex items-center justify-between sm:flex">
         <div className='me-5 md:order-2'>
           <div className='md:hidden'>
             <Hamburger toggled={isOpen} toggle={setIsOpen} />
           </div>
-          <ul className={`flex p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 flex-col md:flex-row md:flex ${isOpen ? 'flex' : 'hidden'} `}>
-            <li>
-              <Link to="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</Link>
-            </li>
-            <li className="dropdown relative block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-              Collection
-              <ul className='absolute dropdown-menu top-full left-0 mt-0 w-[35vh] bg-white border border-gray-200 py-2 shadow-md'>
-                {
-                  categories.map((item, i) => (
-                    <Link to={`/collections/${item?.slug}`} key={i}><li className='ms-3 py-2'>{item?.title}</li></Link>
-                  ))
-                }
-              </ul>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact Us</a>
-            </li>
-          </ul>
+          <div className='relative'>
+            <ul className={`flex p-4 md:p-0 md:relative font-medium gap-5 md:flex-row ${isOpen ? 'flex-col justify-center absolute  w-[100vh] md:w-full bg-gray-900 md:bg-transparent md:mt-4' : 'hidden md:flex'}`}>
+              <li>
+                <Link to="/" className="block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</Link>
+              </li>
+              <li className="dropdown relative block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                Collection
+                <ul className='absolute dropdown-menu top-full left-0 mt-0 w-[35vh] bg-white border border-gray-200 py-2 shadow-md'>
+                  {
+                    categories.map((item, i) => (
+                      <Link to={`/collections/${item?.slug}`} key={i}><li className='ms-3 py-2'>{item?.title}</li></Link>
+                    ))
+                  }
+                </ul>
+              </li>
+              <li>
+                <a href="#" className="block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+              </li>
+              <li>
+                <a href="#" className="block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
         </div>
-        <Link to="/" className='md:order-1'>
+        <Link to="/" className='md:order-1 md:ms-5'>
           <div className='w-32 sm:w-32 md:w-32 lg:w-36 xl:w-40 2xl:w-48 mx-2'>
             <img src={logo} alt="logo" />
           </div>
         </Link>
-        <div className='flex items-center gap-3 me-5 md:order-3'>
+        <div className='flex items-center gap-3 me-5 md:order-3 md:me-8'>
           <button className={`hover:bg-blue-500 p-3 rounded-lg ${searchBar ? "bg-blue-500" : ""}`}
             onClick={handleSearchBar}
           >
