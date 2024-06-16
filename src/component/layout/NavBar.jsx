@@ -8,7 +8,6 @@ import { setUser } from '../../pages/profile/userSlice';
 import useDebounce from '../../customHook/useDebounce';
 import { RxCross1 } from "react-icons/rx";
 import { SearchItems } from '../search-items/SearchItems';
-import { Cat } from '../collection/Cat';
 import Hamburger from 'hamburger-react'
 
 export const NavBar = () => {
@@ -21,8 +20,6 @@ export const NavBar = () => {
 
   const [colorChnage, setColorChange] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const [showCat, setShowCat] = useState(false)
 
   //Search states
   const [form, setForm] = useState({})
@@ -99,12 +96,6 @@ export const NavBar = () => {
     setColorChange(false)
   }
 
-  const handleCatToggle = () => {
-    setSearchBar(false)
-    setIsDropdownOpen(false)
-    setShowCat(!showCat)
-  }
-
   return (
     <div className={`text-white text-xl px-5 py-5 fixed top-0 left-0 right-0 z-20 ${colorChnage ? 'bg-gray-900 transition-all duration-800' : 'bg-transparent'}`}>
       <div className="flex items-center justify-between sm:flex">
@@ -116,16 +107,15 @@ export const NavBar = () => {
             <li>
               <Link to="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</Link>
             </li>
-            <li>
-              <div className='relative'>
-                <button href="#" className={`hover:text-blue-500 ${showCat ? "text-blue-500" : ""}`} onClick={handleCatToggle}>
-                  Collection</button>
-                {showCat && (
-                  <ul className="absolute top-full left-0 mt-3 w-[35vh] bg-white border border-gray-200 rounded-lg py-2 shadow-md">
-                    <Cat categories={categories} handleCatToggle={handleCatToggle}/>
-                  </ul>
-                )}
-              </div>
+            <li className="dropdown relative block py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+              Collection
+              <ul className='absolute dropdown-menu top-full left-0 mt-0 w-[35vh] bg-white border border-gray-200 py-2 shadow-md'>
+                {
+                  categories.map((item, i) => (
+                    <Link to={`/collections/${item?.slug}`} key={i}><li className='ms-3 py-2'>{item?.title}</li></Link>
+                  ))
+                }
+              </ul>
             </li>
             <li>
               <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
