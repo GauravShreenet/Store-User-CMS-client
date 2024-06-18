@@ -27,7 +27,11 @@ To get started with this project, follow these steps:
 6. Now, click the link shown in your terminal to view the application.
 
 ## Usage
-Once the application is running, users can start interacting with the e-commerce website. They can browse products, manage their cart, and track their orders through the provided interface.
+Once the application is running, users can:
+
+- **Browse Products:** Explore the wide range of products available in the store.
+- **Manage Cart:** Add products to their cart, adjust quantities, and proceed to checkout.
+- **Track Orders:** View their order history and monitor the status of ongoing orders.
 
 ## License
 This project is licensed under the MIT License.
