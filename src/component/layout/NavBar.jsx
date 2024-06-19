@@ -40,8 +40,8 @@ export const NavBar = () => {
 
   const handleDropdownToggle = () => {
     setSearchBar(false)
-    setShowCat(false)
     setIsDropdownOpen(!isDropdownOpen);
+    setColorChange(true)
   };
 
   const changeColor = () => {
@@ -168,15 +168,15 @@ export const NavBar = () => {
                   </button>
 
                   {isDropdownOpen && (
-                    <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
+                    <div className="absolute -right-1 z-10 mt-6 w-56 origin-top-right rounded-b-md bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                       <div className="" role="none">
-                        <Link to="/edit-profile" className="text-gray-700 rounded-t-md block px-4 py-2 text-sm hover:bg-blue-100" role="menuitem" tabIndex="-1" id="menu-item-0">Account settings</Link>
-                        <Link to="/orders" className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-100" role="menuitem" tabIndex="-1" id="menu-item-2">Orders</Link>
-                        <a href="#" className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-100" role="menuitem" tabIndex="-1" id="menu-item-2">Support</a>
+                        <Link to="/edit-profile" className="text-white block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabIndex="-1" id="menu-item-0">Account settings</Link>
+                        <Link to="/orders" className="text-white block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabIndex="-1" id="menu-item-2">Orders</Link>
+                        <a href="#" className="text-white block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabIndex="-1" id="menu-item-2">Support</a>
                         <button
                           onClick={handleOnLogOut}
                           type="submit"
-                          className="text-gray-700 rounded-b-md block w-full px-4 py-2 text-left text-sm hover:bg-blue-100" role="menuitem" tabIndex="-1" id="menu-item-3">Logout</button>
+                          className="text-white rounded-b-md block w-full px-4 py-2 text-left text-sm hover:bg-gray-600" role="menuitem" tabIndex="-1" id="menu-item-3">Logout</button>
                       </div>
                     </div>
                   )}
