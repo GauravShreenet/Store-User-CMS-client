@@ -148,11 +148,11 @@ export const NavBar = () => {
 
         </div>
         <Link to="/" className='md:order-1 md:ms-5'>
-          <div className='w-32 sm:w-32 md:w-32 lg:w-36 xl:w-40 2xl:w-48 mx-2'>
+          <div className='w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 2xl:w-48 mx-2'>
             <img src={logo} alt="logo" />
           </div>
         </Link>
-        <div className='flex items-center gap-3 me-5 md:order-3 md:me-8'>
+        <div className='flex items-center md:gap-2 me-5 md:order-3 md:me-8'>
           <button className={`hover:bg-blue-500 p-3 rounded-lg ${searchBar ? "bg-blue-500" : ""}`}
             onClick={handleSearchBar}
           >
@@ -163,7 +163,7 @@ export const NavBar = () => {
           </button>
           {
             user?._id ? (
-              <div className='flex items-center gap-3'>
+              <div className='flex items-center md:gap-3'>
                 <div className="relative inline-block text-left">
                   <button
                     type="button"
@@ -213,7 +213,7 @@ export const NavBar = () => {
               </div>
             )
               : (
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center md:gap-3'>
                   <Link to='/sign-in'><button type="button" className="text-white text-[2vh] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Login</button></Link>
                   <Link to="/mycart">
                     <div>
