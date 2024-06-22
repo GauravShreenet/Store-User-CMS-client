@@ -202,7 +202,7 @@ export const NavBar = () => {
                   )}
                 </div>
                 <Link to="/mycart">
-                  <div>
+                  <div className='ms-2 md:ms-0'>
                     <button className='relative inline-flex items-center'>
                       <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-gray-600 bg-white border-2 border-white rounded-full -top-2 -end-2">{userCart.length}</div>
                       <AiOutlineShoppingCart className='text-[4vh] hover:text-blue-500' />
