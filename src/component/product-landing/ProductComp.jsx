@@ -92,13 +92,13 @@ export const ProductComp = () => {
     return (
         <section className="py-20 bg-[#F4F4F4] font-poppins">
             <div className='md:flex md:justify-around'>
-                <div className="flex gap-10">
-                    <div className='h-[40vh] w-[25vh]'>
+                <div className="flex justify-center gap-10">
+                    <div className='hidden md:flex md:h-[40vh] md:w-[25vh]'>
                         {
                             <CustomVertical variationImages={variationImages} onImageSelect={handleOnImgSelect} />
                         }
                     </div>
-                    <div className="mb-6 lg:mb-10 h-[45vh] md:h-[85vh]  w-[30vh] md:w-[60vh] mt-[1vh]">
+                    <div className="flex justify-center mb-6 md:mb-10 h-[45vh] md:h-[85vh] w-[38vh] md:w-[60vh] mt-[1vh]">
                         <img src={selectedImg ? selectedImg : variationThumbnail}
                             alt="" className="object-fit w-full h-full " />
                     </div>
