@@ -90,20 +90,20 @@ export const ProductComp = () => {
     const currentDate = new Date();
 
     return (
-        <section className="py-20 bg-[#F4F4F4] font-poppins">
+        <section className="py-10 md:py-20 bg-[#F4F4F4] font-poppins">
             <div className='md:flex md:justify-around'>
-                <div className="flex justify-center gap-10">
+                <div className="flex justify-center gap-10 mb-8 md:mb-0">
                     <div className='hidden md:flex md:h-[40vh] md:w-[25vh]'>
                         {
                             <CustomVertical variationImages={variationImages} onImageSelect={handleOnImgSelect} />
                         }
                     </div>
-                    <div className="flex justify-center mb-6 md:mb-10 h-[45vh] md:h-[85vh] w-[38vh] md:w-[60vh] mt-[1vh]">
+                    <div className="mb-6 md:mb-10 h-[45vh] md:h-[85vh] w-[38vh] md:w-[60vh] md:mt-[1vh] mt-0">
                         <img src={selectedImg ? selectedImg : variationThumbnail}
                             alt="" className="object-fit w-full h-full " />
                     </div>
                 </div>
-                <div className=''>
+                <div className='mx-5'>
                     <div className="pb-6 mb-8 border-b border-gray-700">
                         <span className="text-lg font-medium text-rose-500">New</span>
                         <h2 className="max-w-xl mt-2 mb-2 text-xl font-bold md:text-4xl uppercase text-center">
